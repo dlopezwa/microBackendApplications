@@ -11,9 +11,14 @@ import javax.persistence.OneToMany;
 
 import com.form.mcbe.functionality.entity.Functionality;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import lombok.Data;
 
 @Data
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.PATCH,
+        RequestMethod.DELETE })
 @Entity
 public class Application {
 
@@ -23,7 +28,6 @@ public class Application {
 
     @Column(nullable = false)
     private String description;
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
     private List<Functionality> functionalities;
